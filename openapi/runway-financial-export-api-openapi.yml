@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Runway Export API
+  version: '1.0'
+  description: Runway's limited Export API lets you programmatically export model pages (submodels) and database pages from a Runway workspace as CSV. It mirrors the manual CSV export available in the Runway app. Authentication uses a bearer API secret generated under workspace Settings > API. Only model (submodel) and database pages are supported; generic pages return an error.
+  contact:
+    name: Runway Support
+    email: support@cfo.ai
+  x-apievangelist-generated: '2026-07-21'
+  x-apievangelist-method: generated
+  x-apievangelist-source: https://runway-docs.cfo.ai/integrations/export-api
+servers:
+- url: https://runway-api.cfo.ai
+  description: Runway API (production)
+security:
+- bearerAuth: []
+tags:
+- name: Export
+  description: Programmatic CSV export of Runway model and database pages.
+paths:
+  /api/submodel/{pageID}:
+    get:
+      operationId: exportSubmodel
+      summary: Export a model page (submodel) as CSV
+      description: Export a Runway model page (submodel) as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string.
+      tags:
+      - Export
+      parameters:
+      - $ref: '#/components/parameters/PageID'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExportResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '400':
+          $ref: '#/components/responses/UnsupportedPage'
+  /api/page/{pageID}:
+    get:
+      operationId: exportDatabasePage
+      summary: Export a database page as CSV
+      description: Export a Runway database page as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string.
+      tags:
+      - Export
+      parameters:
+      - $ref: '#/components/parameters/PageID'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExportResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '400':
+          $ref: '#/components/responses/UnsupportedPage'
+  /api/proposal/{layerID}/submodel/{pageID}:
+    get:
+      operationId: exportProposalSubmodel
+      summary: Export a model page (submodel) from a proposal/scenario layer
+      description: Export a Runway model page (submodel) as CSV as it appears within a specific proposal (scenario) layer, identified by layerID.
+      tags:
+      - Export
+      parameters:
+      - $ref: '#/components/parameters/LayerID'
+      - $ref: '#/components/parameters/PageID'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExportResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '400':
+          $ref: '#/components/responses/UnsupportedPage'
+  /api/proposal/{layerID}/page/{pageID}:
+    get:
+      operationId: exportProposalDatabasePage
+      summary: Export a database page from a proposal/scenario layer
+      description: Export a Runway database page as CSV as it appears within a specific proposal (scenario) layer, identified by layerID.
+      tags:
+      - Export
+      parameters:
+      - $ref: '#/components/parameters/LayerID'
+      - $ref: '#/components/parameters/PageID'
+      responses:
+        '200':
+          $ref: '#/components/responses/ExportResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '400':
+          $ref: '#/components/responses/UnsupportedPage'
+components:
+  responses:
+    Forbidden:
+      description: The authenticated user lacks export permission for the requested page.
+    Unauthorized:
+      description: Missing or invalid API secret.
+    UnsupportedPage:
+      description: The requested page is a generic page; only model (submodel) and database pages can be exported.
+    ExportResult:
+      description: The exported page as CSV.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExportResult'
+  parameters:
+    PageID:
+      name: pageID
+      in: path
+      required: true
+      description: The ID of the Runway page to export.
+      schema:
+        type: string
+    LayerID:
+      name: layerID
+      in: path
+      required: true
+      description: The ID of the proposal (scenario) layer to export the page from.
+      schema:
+        type: string
+  schemas:
+    ExportResult:
+      type: object
+      description: The result of an export request.
+      properties:
+        filename:
+          type: string
+          description: Suggested CSV filename for the exported page.
+        contents:
+          type: string
+          description: CSV contents as a string.
+      required:
+      - filename
+      - contents
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token using an API secret generated in the Runway app under Settings > API. Pass it as `Authorization: Bearer <your API secret>`.'
