@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Runway Export API
+  version: 1.0.0
+extends: openapi/runway-financial-export-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-notes: >-
+        Small read-only CSV export surface. Real bearer auth, four documented
+        GET operations. Companion hosted MCP server provides the richer
+        read surface (see mcp/runway-financial-mcp.yml).
+  - target: $.info
+    update:
+      x-apievangelist-agent-ready: partial
+  - target: $.tags[?(@.name=='Export')]
+    update:
+      x-apievangelist-marquee: true

@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/runway-financial-export-api-openapi.yml
+note: >-
+  Entity graph derived from the Export API path parameters and Runway's
+  documented product concepts (docs). Runway models financial data as drivers,
+  dimensions, databases, models, and pages, versioned by scenarios (proposal
+  layers). Ids surfaced by the Export API are pageID and layerID.
+entities:
+  - name: Organization
+    description: A Runway workspace/organization the user can access.
+  - name: Page
+    id_param: pageID
+    description: >-
+      A canvas that composes drivers, databases, and blocks. Model pages
+      (submodels) and database pages are exportable via the Export API.
+    relationships:
+      - type: has_many
+        target: Block
+  - name: Proposal
+    id_param: layerID
+    description: >-
+      A proposal (scenario) layer that holds parallel changes to the model; the
+      Export API can read a page as it appears within a proposal layer.
+    relationships:
+      - type: belongs_to
+        target: Scenario
+  - name: Scenario
+    description: A parallel version of the model for testing assumptions.
+  - name: Driver
+    description: Core time-series building block representing a modeled metric.
+    relationships:
+      - type: has_many
+        target: Dimension
+        via: segmentation
+  - name: Dimension
+    description: Categorizes data so drivers/databases can be segmented.
+  - name: Database
+    description: Stores raw and modeled business data in rows.
+relationships:
+  - from: Page
+    to: Proposal
+    type: belongs_to
+    via: layerID
+    note: A page can be exported in the context of a proposal layer.

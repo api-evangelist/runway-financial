@@ -1,8 +1,28 @@
 aid: runway-financial
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/runway-financial.png
 name: Runway Financial
-description: Runway Financial is a company surfaced as a portfolio company of 500-global and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Runway is a financial planning and analysis (FP&A) platform for high-growth
+  teams, offering collaborative planning, budgeting, revenue and headcount
+  forecasting, scenario modeling, and variance analysis over 750+ connected data
+  sources (accounting, HRIS, CRM, revenue, and data warehouses). Beyond the
+  application, Runway exposes a limited bearer-authenticated Export API for
+  programmatic CSV export of model and database pages, and a hosted, OAuth-based
+  read-only MCP server so Claude and other AI tools can search and read a Runway
+  workspace. Runway migrated its primary domain from runway.com to cfo.ai and is
+  a 500 Global portfolio company.
 url: https://raw.githubusercontent.com/api-evangelist/runway-financial/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,15 +32,92 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Financial Planning
+- FP&A
+- Forecasting
+- Budgeting
+- Finance
+- MCP
+- Export API
+- SaaS
+apis:
+- name: Runway Export API
+  description: >-
+    Limited, read-only REST API to programmatically export Runway model pages
+    (submodels) and database pages as CSV, optionally within a proposal
+    (scenario) layer. Bearer-authenticated with an API secret from Settings > API.
+  humanURL: https://runway-docs.cfo.ai/integrations/export-api
+  baseURL: https://runway-api.cfo.ai
+  properties:
+  - type: OpenAPI
+    url: openapi/runway-financial-export-api-openapi.yml
+  - type: Overlay
+    url: overlays/runway-financial-export-api-overlay.yaml
+  - type: APIReference
+    url: https://runway-docs.cfo.ai/integrations/export-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/runway-financial-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/runway-financial-vulnerability-disclosure.yml
+- type: Security
+  url: https://runway.cfo.ai/security
+- type: DomainSecurity
+  url: security/runway-financial-domain-security.yml
 - type: Website
-  url: https://runway.com
+  url: https://runway.cfo.ai
+- type: DeveloperPortal
+  url: https://runway-docs.cfo.ai
+- type: Documentation
+  url: https://runway-docs.cfo.ai
+- type: GettingStarted
+  url: https://runway-docs.cfo.ai/get-started/quickstart
+- type: Blog
+  url: https://runway.cfo.ai/blog
+- type: Pricing
+  url: https://runway.cfo.ai/pricing
+- type: SignUp
+  url: https://runway.cfo.ai/demo
+- type: Login
+  url: https://v2.cfo.ai/
+- type: TermsOfService
+  url: https://runway.cfo.ai/terms
+- type: PrivacyPolicy
+  url: https://runway.cfo.ai/privacy
+- type: Support
+  url: mailto:support@cfo.ai
+- type: MCPServer
+  url: mcp/runway-financial-mcp.yml
+- type: LLMsTxt
+  url: llms/runway-financial-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/runway-financial-authentication.yml
+- type: AgenticAccess
+  url: agentic-access/runway-financial-agentic-access.yml
+- type: RateLimits
+  url: rate-limits/runway-financial-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/runway-financial-problem-types.yml
+- type: Conventions
+  url: conventions/runway-financial-conventions.yml
+- type: DataModel
+  url: data-model/runway-financial-data-model.yml
+- type: Conformance
+  url: conformance/runway-financial-conformance.yml
+- type: Compliance
+  url: https://runway.cfo.ai/security

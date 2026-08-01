@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: runway-financial-export-page.md
+    name: Export a Runway page as CSV
+    api: openapi/runway-financial-export-api-openapi.yml
+    operations:
+      - exportSubmodel
+      - exportDatabasePage
+      - exportProposalSubmodel
+      - exportProposalDatabasePage

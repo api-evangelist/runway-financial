@@ -1,0 +1,9 @@
+generated: '2026-07-21'
+method: searched
+source: https://runway-docs.cfo.ai/ai/connecting-ai-tools
+limits:
+  - surface: MCP server (hosted)
+    limit_count: 60
+    window: 1m
+    scope: per user, per tool, per organization
+    notes: Documented rate limit for Runway's hosted read-only MCP tools.

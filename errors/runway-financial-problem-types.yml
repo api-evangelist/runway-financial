@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: derived
+source: https://runway-docs.cfo.ai/integrations/export-api
+format: plain
+note: >-
+  Runway's Export API documents a small set of failure conditions rather than a
+  formal RFC 9457 problem+json registry. Captured here from the Export API docs.
+problems:
+  - status: 401
+    title: Unauthorized
+    detail: Missing or invalid API secret in the Authorization bearer header.
+    source_operation: openapi/runway-financial-export-api-openapi.yml#exportSubmodel
+  - status: 403
+    title: Export permission denied
+    detail: >-
+      The authenticated user lacks export permission for the requested page.
+    source_operation: openapi/runway-financial-export-api-openapi.yml#exportDatabasePage
+  - status: 400
+    title: Unsupported page type
+    detail: >-
+      Only model (submodel) and database pages can be exported; generic pages
+      return an error.
+    source_operation: openapi/runway-financial-export-api-openapi.yml#exportSubmodel

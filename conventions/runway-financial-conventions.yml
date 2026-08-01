@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: https://runway-docs.cfo.ai/integrations/export-api
+summary: >-
+  Cross-cutting conventions for Runway's Export API and hosted MCP server. The
+  Export API is a read-only, GET-only CSV export surface authenticated with a
+  bearer API secret; the MCP server is read-only and OAuth-authenticated. No
+  write operations, and therefore no idempotency contract, are documented.
+authentication:
+  export_api:
+    style: bearer
+    header: Authorization
+    format: 'Bearer <API secret>'
+    secret_source: Runway app Settings > API
+  mcp:
+    style: oauth2
+    flow: browser login
+idempotency:
+  supported: false
+  note: Export/MCP surfaces are read-only (GET); no mutating operations are documented.
+pagination:
+  supported: false
+  note: Export returns a full CSV page payload; no pagination documented.
+versioning:
+  scheme: none-documented
+  note: The Export API is described as a limited API; no explicit versioning scheme is published.
+response_format:
+  export_api:
+    media_type: application/json
+    body:
+      filename: Suggested CSV filename
+      contents: CSV contents as a string
+rate_limiting:
+  mcp:
+    limit_count: 60
+    window: 1m
+    scope: per user, per tool, per organization
+  cross_links:
+    - rate-limits/runway-financial-rate-limits.yml
+error_handling:
+  cross_links:
+    - errors/runway-financial-problem-types.yml

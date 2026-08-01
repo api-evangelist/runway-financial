@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/runway-financial-export-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Bearer token using an API secret generated in the Runway app under Settings
+    > API. Pass it as `Authorization: Bearer <your API secret>`.'
+  sources:
+  - openapi/runway-financial-export-api-openapi.yml

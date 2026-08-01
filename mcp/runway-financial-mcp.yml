@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://runway-docs.cfo.ai/ai/connecting-ai-tools
+server:
+  name: runway
+  transport: http
+  url: https://runway-api.cfo.ai/mcp
+  hosting: hosted
+  description: >-
+    Runway's hosted (remote) MCP server lets Claude and other AI tools read a
+    Runway workspace. The connection authenticates with OAuth through the
+    browser login (no API keys to manage). All hosted MCP tools are read-only.
+    Access requires Admin-level permissions or higher.
+auth:
+  type: oauth2
+  flow: browser
+  notes: OAuth through browser login; no API keys.
+rate_limit:
+  limit_count: 60
+  window: 1m
+  scope: per user, per tool, per organization
+access:
+  read_only: true
+  minimum_role: Admin
+tools:
+  - name: list_organizations
+    description: List the Runway organizations the authenticated user can access.
+  - name: search_entities
+    description: Search pages, drivers, scenarios, and related entities.
+  - name: read_page
+    description: Read the contents of a page.
+  - name: get_driver_metadata
+    description: Access driver metadata and formulas.
+  - name: calculate_driver_values
+    description: Calculate driver values across scenarios.
+  - name: list_scenarios
+    description: List published scenarios.

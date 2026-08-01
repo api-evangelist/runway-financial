@@ -1,0 +1,14 @@
+{
+  "provider": "runway-financial",
+  "sources": [
+    "runway-financial-export-api-openapi.yml"
+  ],
+  "outputs": [
+    "runway-financial-export-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
