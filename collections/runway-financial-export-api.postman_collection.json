@@ -1,0 +1,1111 @@
+{
+  "item": [
+    {
+      "id": "0954360e-eed8-477a-bff3-ae0f32f40121",
+      "name": "Export",
+      "description": {
+        "content": "Programmatic CSV export of Runway model and database pages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da60d970-d5f2-4415-82cd-f1a197da7287",
+          "name": "Export a model page (submodel) as CSV",
+          "request": {
+            "name": "Export a model page (submodel) as CSV",
+            "description": {
+              "content": "Export a Runway model page (submodel) as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "submodel",
+                ":pageID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageID",
+                  "description": "(Required) The ID of the Runway page to export."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0e48677-ad2c-44f4-8fbd-ccafdec4b88a",
+              "name": "The exported page as CSV.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filename\": \"string\",\n  \"contents\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "440eff81-0a53-42c3-99bd-380c763d67c3",
+              "name": "The requested page is a generic page; only model (submodel) and database pages can be exported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c6baca2-6ffa-46c5-95ff-e9cc3525fd7a",
+              "name": "Missing or invalid API secret.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9aeba26e-26a1-4f9e-821c-4b5a720b8214",
+              "name": "The authenticated user lacks export permission for the requested page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a69493c-c6b1-456c-b538-dcad4987b00c",
+          "name": "Export a database page as CSV",
+          "request": {
+            "name": "Export a database page as CSV",
+            "description": {
+              "content": "Export a Runway database page as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "page",
+                ":pageID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageID",
+                  "description": "(Required) The ID of the Runway page to export."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66577d10-348f-4d19-80d0-185b3cc14f9d",
+              "name": "The exported page as CSV.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filename\": \"string\",\n  \"contents\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e69985bd-d3ac-4b58-b0e3-df1f3a3b7506",
+              "name": "The requested page is a generic page; only model (submodel) and database pages can be exported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3005c48a-1be8-4bfa-995e-485f0cf656b7",
+              "name": "Missing or invalid API secret.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0222b523-3536-4fcc-ab42-e819f5366777",
+              "name": "The authenticated user lacks export permission for the requested page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a4483a6-a260-401a-8621-092ab7464773",
+          "name": "Export a model page (submodel) from a proposal/scenario layer",
+          "request": {
+            "name": "Export a model page (submodel) from a proposal/scenario layer",
+            "description": {
+              "content": "Export a Runway model page (submodel) as CSV as it appears within a specific proposal (scenario) layer, identified by layerID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "proposal",
+                ":layerID",
+                "submodel",
+                ":pageID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layerID",
+                  "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageID",
+                  "description": "(Required) The ID of the Runway page to export."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e34ba37-22f3-4153-aabe-9dc2c2644865",
+              "name": "The exported page as CSV.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filename\": \"string\",\n  \"contents\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2674fa4-59d6-4552-901f-e4267ca80bff",
+              "name": "The requested page is a generic page; only model (submodel) and database pages can be exported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c8467fc-c437-43d0-b82d-98c83e73f6e7",
+              "name": "Missing or invalid API secret.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be757938-0c18-48d2-bc80-84cf0e271143",
+              "name": "The authenticated user lacks export permission for the requested page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "submodel",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a451cd1-29b3-4eb6-bebc-d8e83e4adc90",
+          "name": "Export a database page from a proposal/scenario layer",
+          "request": {
+            "name": "Export a database page from a proposal/scenario layer",
+            "description": {
+              "content": "Export a Runway database page as CSV as it appears within a specific proposal (scenario) layer, identified by layerID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "proposal",
+                ":layerID",
+                "page",
+                ":pageID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layerID",
+                  "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pageID",
+                  "description": "(Required) The ID of the Runway page to export."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82d1cf29-e054-4e79-aa2b-ea08f7e6f9fe",
+              "name": "The exported page as CSV.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filename\": \"string\",\n  \"contents\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e44826bf-f388-4670-a272-99e6264affdd",
+              "name": "The requested page is a generic page; only model (submodel) and database pages can be exported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55615cee-e126-4057-b7e6-cd339ff1b6e9",
+              "name": "Missing or invalid API secret.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d2fe41b-40a7-43cb-b64b-2a5d53e50242",
+              "name": "The authenticated user lacks export permission for the requested page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "proposal",
+                    ":layerID",
+                    "page",
+                    ":pageID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layerID",
+                      "description": "(Required) The ID of the proposal (scenario) layer to export the page from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pageID",
+                      "description": "(Required) The ID of the Runway page to export."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://runway-api.cfo.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "807ef99b-9734-4a27-a70c-d86c48b071dc",
+    "name": "Runway Export API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Runway's limited Export API lets you programmatically export model pages (submodels) and database pages from a Runway workspace as CSV. It mirrors the manual CSV export available in the Runway app. Authentication uses a bearer API secret generated under workspace Settings > API. Only model (submodel) and database pages are supported; generic pages return an error.\n\nContact Support:\n Name: Runway Support\n Email: support@cfo.ai",
+      "type": "text/plain"
+    }
+  }
+}

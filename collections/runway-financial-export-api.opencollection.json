@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Runway Export API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export a model page (submodel) as CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://runway-api.cfo.ai/api/submodel/:pageID",
+            "params": [
+              {
+                "name": "pageID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Runway page to export."
+              }
+            ]
+          },
+          "docs": "Export a Runway model page (submodel) as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string."
+        },
+        {
+          "info": {
+            "name": "Export a database page as CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://runway-api.cfo.ai/api/page/:pageID",
+            "params": [
+              {
+                "name": "pageID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Runway page to export."
+              }
+            ]
+          },
+          "docs": "Export a Runway database page as CSV from the Main version of the workspace. Returns JSON containing the suggested filename and the CSV contents as a string."
+        },
+        {
+          "info": {
+            "name": "Export a model page (submodel) from a proposal/scenario layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://runway-api.cfo.ai/api/proposal/:layerID/submodel/:pageID",
+            "params": [
+              {
+                "name": "layerID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the proposal (scenario) layer to export the page from."
+              },
+              {
+                "name": "pageID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Runway page to export."
+              }
+            ]
+          },
+          "docs": "Export a Runway model page (submodel) as CSV as it appears within a specific proposal (scenario) layer, identified by layerID."
+        },
+        {
+          "info": {
+            "name": "Export a database page from a proposal/scenario layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://runway-api.cfo.ai/api/proposal/:layerID/page/:pageID",
+            "params": [
+              {
+                "name": "layerID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the proposal (scenario) layer to export the page from."
+              },
+              {
+                "name": "pageID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Runway page to export."
+              }
+            ]
+          },
+          "docs": "Export a Runway database page as CSV as it appears within a specific proposal (scenario) layer, identified by layerID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
