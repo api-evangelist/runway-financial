@@ -47,6 +47,16 @@ tags:
 - Finance
 - MCP
 - Export API
+- Software-as-a-Service
+tags_raw:
+- Company
+- Financial Planning
+- FP&A
+- Forecasting
+- Budgeting
+- Finance
+- MCP
+- Export API
 - SaaS
 apis:
 - name: Runway Export API
