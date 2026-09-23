@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Runway Export API
   version: '1.0'
@@ -94,31 +94,31 @@ paths:
           $ref: '#/components/responses/UnsupportedPage'
 components:
   responses:
-    Forbidden:
-      description: The authenticated user lacks export permission for the requested page.
-    Unauthorized:
-      description: Missing or invalid API secret.
     UnsupportedPage:
       description: The requested page is a generic page; only model (submodel) and database pages can be exported.
+    Forbidden:
+      description: The authenticated user lacks export permission for the requested page.
     ExportResult:
       description: The exported page as CSV.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ExportResult'
+    Unauthorized:
+      description: Missing or invalid API secret.
   parameters:
-    PageID:
-      name: pageID
-      in: path
-      required: true
-      description: The ID of the Runway page to export.
-      schema:
-        type: string
     LayerID:
       name: layerID
       in: path
       required: true
       description: The ID of the proposal (scenario) layer to export the page from.
+      schema:
+        type: string
+    PageID:
+      name: pageID
+      in: path
+      required: true
+      description: The ID of the Runway page to export.
       schema:
         type: string
   schemas:

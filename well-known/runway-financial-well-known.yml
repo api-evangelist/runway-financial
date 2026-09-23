@@ -1,0 +1,33 @@
+generated: '2026-09-19'
+method: probed
+hosts:
+- host: https://runway-api.cfo.ai
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: runway-financial-runway-api-oauth-protected-resource.json
+    bytes: 180
+  path_echo_control: passed
+- host: https://sensational-pose-40.authkit.app
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: runway-financial-sensational-pose-40-oauth-authorization-server.json
+    bytes: 974
+  path_echo_control: passed
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://runway-api.cfo.ai
+    path: /.well-known/oauth-protected-resource
+    file: runway-financial-runway-api-oauth-protected-resource.json
+  - host: https://sensational-pose-40.authkit.app
+    path: /.well-known/oauth-authorization-server
+    file: runway-financial-sensational-pose-40-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
