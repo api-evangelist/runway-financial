@@ -93,19 +93,34 @@ paths:
         '400':
           $ref: '#/components/responses/UnsupportedPage'
 components:
+  parameters:
+    PageID:
+      name: pageID
+      in: path
+      required: true
+      description: The ID of the Runway page to export.
+      schema:
+        type: string
+    LayerID:
+      name: layerID
+      in: path
+      required: true
+      description: The ID of the proposal (scenario) layer to export the page from.
+      schema:
+        type: string
   responses:
+    UnsupportedPage:
+      description: The requested page is a generic page; only model (submodel) and database pages can be exported.
     ExportResult:
       description: The exported page as CSV.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ExportResult'
-    Forbidden:
-      description: The authenticated user lacks export permission for the requested page.
-    UnsupportedPage:
-      description: The requested page is a generic page; only model (submodel) and database pages can be exported.
     Unauthorized:
       description: Missing or invalid API secret.
+    Forbidden:
+      description: The authenticated user lacks export permission for the requested page.
   schemas:
     ExportResult:
       type: object
@@ -120,21 +135,6 @@ components:
       required:
       - filename
       - contents
-  parameters:
-    LayerID:
-      name: layerID
-      in: path
-      required: true
-      description: The ID of the proposal (scenario) layer to export the page from.
-      schema:
-        type: string
-    PageID:
-      name: pageID
-      in: path
-      required: true
-      description: The ID of the Runway page to export.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
